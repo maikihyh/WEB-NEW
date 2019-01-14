@@ -1,0 +1,386 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task6】 angularjs双向绑定</h3>
+            <p>分享人：霍亚豪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>双向绑定</h3>
+                <p style="text-align: left">Angular实现了双向绑定机制。所谓的双向绑定，无非是从界面的操作能实时反映到数据，数据的变更能实时展现到界面
+                    当 view 中有任何数据变化时，会更新到 model ，当 model 中数据有变化时，view 也会同步更新</p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="stack present"; style="top: 0; display: block;" data-previous-indexv="1">
+            <h3>AngularJS Scope(作用域)</h3>
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">Scope(作用域)是应用在 HTML (视图)和 JavaScript (控制器)之
+                    间的纽带。Scope是一个对象，有可用的方法和属性。Scope可应用在视图和控制器
+                    上。$scope的使用贯穿整个 Angular App应用,它与数据模型相关联
+                    ,同时也是表达式执行的上下文.有了 $scope就在视图和控制器之间建立
+                    了一个通道,基于作用域视图在修改数据时会立刻更新 $scope,同样的 $s
+                    cope发生改变时也会立刻重新渲染视图.
+                    </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>$scope</h3>
+                <p style="text-align: left">
+                    $scope是一个把view（一个DOM元素）连结到controller上的对象。在我们的MVC结构里，这个 $scope将成为model，它提供一个绑定到DOM元素（以及其子元素）上的excecution context。
+                    $scope实际上就是一个JavaScript对象，controller和view都可以访问它，所以我们可以利用它在两者间传递信息。在这个 $scope对象里，我们既可以存储数据，又可以存储将要运行在view上的函数。
+
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>$scope的作用</h3>
+                <p style="text-align: center">提供了观察者可以监听数据模型的变化
+                    可以将数据模型的变化通知给整个 App
+                    可以进行嵌套,隔离业务功能和数据
+                    给表达式提供上下文执行环境
+                    在 Javascript中创建一个新的执行上下文,实际就是用函数创建了一个新的本地上下文,
+                    在 Angular中当为子 DOM元素创建新的作用域时,其实就是为子 DOM元素创建了一个新的执行上下文.
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>$watch:</h3>
+                <p style="text-align: center">angularjs核心之一是双向绑定，那么这个双向绑定是如何实现的呢？  当我们在创建出scope下的一个新属性的时候，ng就会主动为我们新属性注册$watch这个方法，$watch用来监听的数据变化，当数据变化之后，就立即把view和scope上数据同步。AngularJS就能够自动注册并监听变量的改变。AngularJS会首先将在{{ }}中声明的表达式编译成函数并调用$watch方法。
+                     $watch是一个scope函数，用于监听模型变化但是，还存在一个很重要的问题！AngularJS是如何知道什么时候要调用这个回调函数呢？换句话说，AngularJS是如何知晓aModel发生了变化，才调用了对应的回调函数呢？它会周期性的运行一个函数来检查scope模型中的数据是否发生了变化吗？好吧，这就是$digest循环的用武之地了。
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>$digest</h3>
+                <p style="text-align: center">在调用了$scope.$digest()后，$digest循环就开始了。假设你在一个ng-click指令对应的handler函数中更改了scope中的一条数据，此时AngularJS会自动地通过调用$digest()来触发一轮$digest循环。当$digest循环开始后，它会触发每个watcher。这些watchers会检查scope中的当前model值是否和上一次计算得到的model值不同。如果不同，那么对应的回调函数会被执行。调用该函数的结果，就是view中的表达式内容(译注：诸如{{ aModel }})会被更新。除了ng-click指令，还有一些其它的built-in指令以及服务来让你更改models(比如ng-model，$timeout等)和自动触发一次$digest循环。
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p style="text-align: center">     AngularJS并不直接调用$digest()，而是调用$scope.$apply()，后者会调用$rootScope.$digest()。因此，一轮$digest循
+                环在$rootScope开始，随后会访问到所有的children scope中的watchers。   </p>
+        </section>
+    </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">    例如我们按下按钮触发ng-click事件：<br>
+                      1、浏览器接收到一个事件，进入angular context。<br>
+                      2、 $digest循环开始执行，查询每个$watch是否变化。<br>
+                      3、 由于监视$scope.name的$watch报告了变化，它会强制再执行一次$digest循环。<br>
+                      4、 新的$digest循环没有检测到变化。<br>
+                      5、浏览器拿回控制权，更新与$scope.name新值相应部分的DOM。<br>    </p>
+            </section>
+        </section>
+                 <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <p style="text-align: center">
+                  6、这里重要的是每一个进入angular context{　我们的浏览器一直在等待事件，比如用户交互。假如你点击一个按钮或者在输入框里输入东西，事件的回调函数就会在javascript解释器里执行，然后你就可以做任何DOM操作，等回调函数执行完毕时，浏览器就会相应地对DOM做出变化。 Angular拓展了这个事件循环，生成一个有时成为angular context的执行环境}的事件都会执行一个$digest循环，也就是说每次我们输入一个字母循环都会检查整个页面的所有$watch。  Angular会为我们自动调用$apply！因此当点击带有ng-click的元素时，事件就会被封装到一个$apply调用。  比如有一个ng-model="foo"的输入框，然后敲一个f，事件就会这样调用$apply("foo = 'f';")，触发$digest循环。
+            </p>
+        </section>
+    </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>什么时候手动调用$apply()方法？</p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">如果AngularJS总是将我们的代码wrap到一个function中并传入$apply()，以此来开始一轮$digest循环，那么什么时候才需要我们手动地调用$apply()方法呢？实际上，AngularJS对此有着非常明确的要求，就是它只负责对发生于AngularJS上下文环境中的变更会做出自动地响应(即，在$apply()方法中发生的对于models的更改)。AngularJS的built-in指令就是这样做的，所以任何的model变更都会被反映到view中。但是，如果你在AngularJS上下文之外的任何地方修改了model，那么你就需要通过手动调用$apply()来通知AngularJS。这就像告诉AngularJS，你修改了一些models，希望AngularJS帮你触发watchers来做出正确的响应。
+                </p> </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">  如果你使用了JavaScript中的setTimeout()来更新一个scope model，那么AngularJS就没有办法知道你更改了什么。这种情况下，调用$apply()就是你的责任了，通过调用它来触发一轮$digest循环。类似地，如果你有一个指令用来设置一个DOM事件listener并且在该listener中修改了一些models，那么你也需要通过手动调用$apply()来确保变更会被正确的反映到view中。
+                </p> </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
+                <a  href="dom/双向绑定/$digest.html">
+                    <h3>demo</h3></a></section>
+        </section>
+
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;"><h3> $digest循环会运行多少次？</h3>
+                    <p style="text-align: left">当一个$digest循环运行时，watchers会被执行来检查scope中的models是否发生了变化。如果发生了变化，那么相应的listener函数就会被执行。这涉及到一个重要的问题。如果listener函数本身会修改一个scope model呢？AngularJS会怎么处理这种情况？
+                        答案是$digest循环不会只运行一次。在当前的一次循环结束后，它会再执行一次循环用来检查是否有models发生了变化。这就是脏检查(Dirty Checking)，它用来处理在listener函数被执行时可能引起的model变化。
+                        因此，$digest循环会持续运行直到model不再发生变化，或者$digest循环的次数达到了10次。因此，尽可能地不要在listener函数中修改model。
+                       $digest循环最少也会运行两次，即使在listener函数中并没有改变任何model。正如上面讨论的那样，它会多运行一次来确保models没有变化。
+                </section>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;"><h3> 脏检查</h3>
+                    <p style="text-align: left">$digest是一个内部函数，正常的应用代码中是不应该直接调用它的。要想主动触发它，就要调用scope.$apply函数，它是触发Angular“脏检查机制”的常用公开接口。$digest循环实际上包括两个while循环。分别是：处理$evalAsync的异步运算队列，处理$watch的watchers队列。当该循环触发时，它会遍历当前$scope及其所有子$scope上已注册的所有watchers函数。遍历一遍所有watcher函数成为一轮脏检查。执行完一轮脏检查，如果任何一个watcher所监听的值改变过，那么就会重新再进行一轮脏检查，直到所有的watcher函数都报告其所监听的值不改变了。当循环结束时，才把模型的变化结果更新到DOM中去。这样做为了，防止频繁更新DOM属性。
+                </section>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;">
+
+                    <p style="text-align: left">表达式{{aaa.x}},AngularJS不仅会渲染该数据，还会为该特定值创建一个观察程序。之后，只要程序发生任何事情，AngularJS就会检查该观察过程中的值是否更改。如果有，重新呈现表达式。运行这些观察者的过程称为脏检查。  </section>
+            </section>
+        </section>
+          <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="future">
+            <h3>7.参考文献</h3>
+            <p>https://blog.csdn.net/dm_vincent/article/details/38705099</p>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 霍亚豪</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+    语法：
+    return[()[expression][]];
+    可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+    用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
