@@ -1,0 +1,396 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>葡萄藤PPT</title>
+
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/reveal.css">
+
+    <!-- PPT主题，可以在/css/reveal/theme/中选择其他主题，目前暂时只能使用该模板 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/css/reveal/theme/ptt.css">
+
+    <!-- syntax highlighting 代码高亮主题 -->
+    <link rel="stylesheet" href="https://ptteng.github.io/PPT/lib/reveal/css/zenburn.css">
+
+    <style>
+        .float {
+            float: left;
+        }
+    </style>
+
+
+    <!-- 打印和PDF输出样式 -->
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'https://ptteng.github.io/PPT/css/reveal/print/pdf.css' : '../css/reveal/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+</head>
+<body>
+<img src="./葡萄藤PPT_files/logo.png" alt="" usemap="#pttmap" class="base-logo">
+<map name="pttmap">
+    <area shape="rect" coords="0,0,276,58" href="http://www.jnshu.com/" alt="" target="_blank">
+</map>
+<div class="reveal default center" role="application" data-transition-speed="slow" data-background-transition="fade">
+    <div class="slides" style="width: 960px; height: 700px; left: 50%; top: 50%; bottom: auto; right: auto; transform: translate(-50%, -50%) scale(0.756);">
+        <section class="past" style="top: 158px; display: none;" hidden="" aria-hidden="true">
+            <h3>【JS-task6】 angular js中的依赖注入是什么？有什么作用？与不用依赖注入的其他框架相比，有何优点？</h3>
+            <p>分享人：霍亚豪</p>
+        </section>
+        <section class="past" style="top: 3px; display: block;" hidden="" aria-hidden="true">
+            <p>目录</p>
+            <p>1.背景介绍</p>
+            <p>2.知识剖析</p>
+            <p>3.常见问题</p>
+            <p>4.解决方案</p>
+            <p>5.编码实战</p>
+            <p>6.扩展思考</p>
+            <p>7.参考文献</p>
+            <p>8.更多讨论</p>
+        </section>
+        <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>1.背景介绍</h3>
+        </section>
+
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖 （或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。该模 式分离了客户端依赖本身行为的创建，这使得程序设计变得松耦合，并遵循了依赖反转和单一职责原则。与服务定位器 模式形成直接对比的是，它允许客户端了解客户端如何使用该系统找到依赖。
+                    依赖注入产生的背景：传统应用程序通常是在类内部执行代码中主动创建这个类所依赖的其它对象， 从而 导致类与类之间发生紧密耦合，使得类难于测试和隔离，最终导致系统的扩展和维护异常困难。
+                    依赖注入用来解决组件之间依赖关系、配置及生命周期管理， 通过转移对象控制权，可以解决类之间的耦 合问题， 对象与对象之间是松散耦合关系，更重要的是使得应用程序体系结构变得非常灵活， 很好的体现了面向对象的 设计法则之一---依赖设计原则
+                </p>
+            </section>
+        </section>
+        <section class="future" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+            <h3>2.知识剖析</h3>
+        </section>
+        <section class="stack present"; style="top: 0; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">     angular依赖注入机制AngularJS 提供了5个核心组件用来作为依赖注入： <br>
+                                        value <br>
+                                        factory<br>
+                                        service<br>
+                                        provider<br>
+                                        constant 
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">
+                     $provide (供应商) <br>
+                    供应商==>泛指provider<br>
+                    服务==>泛指service<br>
+                      provider==>provider()方法创建的东东 <br>
+                       service==>service()方法创建的东东 </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">$provide服务负责告诉Angular如何创造一个新的可注入的代码块：即服务。服务会被叫做供应商的代码块来定义，我们可以使用$provide来创建一个供应商。
+                    我们需要使用$provide中的provider()方法来定义一个供应商，同时也可以通过要求$provide被注入到一个应用的config函数中来获得$provide服务。<br>
+                    <img src="dom/依赖注入/img/provide.png" height="285" width="1043"/>
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">在上面的例子中我们为一个服务定义了一个叫做greeting的新provider。 我们可以把一个叫做greeting的变量注入到任何可注入的函数中 （例如控制器）然后Angular就会调用这个provider的$get函数来返回这个服务的一个实例。
+                    在上面的例子中，被注入的是一个函数， 它接受一个参数并且根据这个参数alert一条信息。我们可以像下面这样使用它：<br>
+                    <img src="dom/依赖注入/img/provide1.png" height="182" width="1046"/></p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">
+                    1、Constant <br>
+                    Constant定义常量，Constant定义的值不应该被改变，它可以被注入到任何地方，但是不能被装饰器(decorator)装饰 <br>
+                    2、VALUE <br>
+                    Value可以是string,number甚至function,它和constant的不同之处在于，它可以被修改，不能被注入到config中，但是它可以被decorator装饰 <br>
+                       </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: center">
+                          3、SERVICE <br>
+                    Service是一个可注入的构造器，在AngularJS中它是单例的，用它在Controller中通信或者共享数据都很合适. 在service里面可以不用返回东西，因为AngularJS会调用new关键字来创建对象。<br>
+                    4、FACTORY <br>
+                    Factory是一个可注入的function，它和service的区别就是：factory是普通function，而service是一个构造器(constructor)， Angular在调用service时会用new关键字，而调用factory时只是调用普通的function，所以factory可以返回任何东西，而service可以不返回. factory可以返回任何东西，它实际上是一个只有$get方法的provider
+                </p>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>在Angular中，依赖注入可谓无孔不入。通常在两种场景下会使用到依赖注入：</h3>
+                <p style="text-align: left">
+                    1．工厂方法定义的组件（components）：如directive，factory，filter，provider，controller等。 这些工厂函数需要注册到某个模块上。controller比较特殊，它虽然也是一种组件，但是特别之处是它与某个DOM元素关联 ，因此可以注入$scope service，而其他组件只能注入$rootScope service。所有的供应商都只被实例化一次，也就说他 们都是单例的，除了constant，所有的供应商都可以被装饰器(decorator)装饰，value就是一个简单的可注入的值， service是一个可注入的构造器，factory是一个可注入的方法，decorator可以修改或封装其他的供应商，当然除了constant ，provider是一个可配置的factory。
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">
+                    2.模块提供的run/config方法。
+                    Angular在加载模块时经过两个阶段：config和run。传入config函数的方法会在当前模块加载时执行；传入 run函数的方法会在所有模块加载结束后执行。因此，在config阶段即可配置多个provider，但是在config阶段，只有provider 可以注入，因此自定义的service无法注入到config中，config阶段是对service进行配置的而不是使用service本身。 $provide service本身就是一个provider（对于Angular应用来讲相当于一个'元provider'），在模块加载时会调用$provide 的provider方法定义一个新的provider。
+                </section>
+        </section>
+
+
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>3.常见问题</h3></section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p>AngularJS依赖注入的方法</p>
+            </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>4 解决方案</h3></section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">1. 通过函数的参数进行推断式注入声明 <br>
+                    如果没有明确的声明， AngularJS会假定参数名称就是依赖的名称。因此，它会在内部调用函数对象的toString()方法，分析并提取出函数的参数列表，然后通过 $injector将这些参数注入进对象实例。
+                    <br> 2、显式注入声明 <br>
+                    AngularJS提供了显式的方法来明确定义一个函数在被调用时需要用到的依赖关系。
+                    通过这种方法声明依赖，即使在源代码被压缩、参数名称发生改变的情况下依然能够正常工作。
+                    需要注意的地方: <br>
+                    对于这种声明方式来讲，参数的顺序是十分重要的，因为$inject数组元素的顺序必须和注入的参数的顺序一一对应。
+                </p> </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <p style="text-align: left">
+                    3、行内注入声明 <br>
+                    AngularJS提供的行内注入方法实际上是一种语法糖，它与前面的提到的通过$inject属性进行声明的原理是一样的，但是允许我们在函数定义的时候从行内将参数传入，这种方法方便，简单，而且避免了在定义的过程中使用临时变量。
+                    需要注意的地方: 
+                    行内声明的方式允许我们直接传入一个参数数组，而不是一个函数。数组的元素是字符串，它们代表的是可以被注入到对象中的依赖名字，最后一个参数就是依赖注入的目标函数对象本身。
+                </p> </section>
+        </section>
+        <section style="text-align: left; top: 330px; display: none;" hidden="" aria-hidden="true" class="stack future">
+            <section style="text-align: center; top: 330px; display: none;"><h3>5.编码实战</h3>
+                <a  href="dom\依赖注入\factory.html">
+                    <h3>demo</h3></a></section>
+        </section>
+
+
+        <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+            <section style="top: 330px; display: none;">
+                <h3 style="text-align: center">6.扩展思考</h3>
+            </section>
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section hidden="" aria-hidden="true" class="stack future" style="top: 330px; display: none;">
+                <section style="top: 330px; display: none;"><h3>AngularJS中的依赖注入有何优点？</h3>
+                    <p style="text-align: left">
+                        一、模板功能强大丰富，并且是声明式的，自带了丰富的Angular指令；
+
+                        二、是一个比较完善的前端MVC框架，包含模板，数据双向绑定，路由，模块化，服务，过滤器，依赖注入等所有功能；
+
+                        三、依赖注入简化了组件之间处理依赖的过程（即解决依赖）。没有依赖注入，就不得不以某种方式自己查找$scope，很可能得使用全局变量。这虽然能够工作，但是不如AngularJS的依赖注入技术这么简单。
+
+                        四、在开发中使用依赖注入的主要好处是AngularJS负责管理组件并在需要的时候提供给相应函数。依赖注入还能够为测试带来好处，因为它允许你使用假的或者模拟的对象来代替真实的组件，从而让开发者专注于程序的特定部分。
+                </section>
+        </section>
+
+        </section>
+        <section class="stack present" style="top: 0px; display: block;" data-previous-indexv="1">
+            <section class="past" style="top: 267px; display: block;" hidden="" aria-hidden="true">
+                <h3>7.参考文献</h3>
+                <p>参考一  玩转 AngualrJS 的依赖注入  https://segmentfault.com/a/1190000002786133 <br>
+
+                    参考二  详解AngularJS中的依赖注入  http://www.html-js.com/article/Injection-with-Angular-development-web-application-AngularJS-explain-only-dependence
+                    <br>
+
+                    参考三  理解AngularJS中的依赖注入   http://www.html-js.com/article/1980 <br>
+                </p>  </section>
+        </section>
+
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+            <h3>8 更多讨论</h3>
+        </section>
+        <section hidden="" aria-hidden="true" class="future" style="top: 330px; display: none;">
+
+            <h4>鸣谢</h4>
+            <p>感谢大家观看</p>
+            <p>
+                <small>BY : 霍亚豪</small>
+            </p>
+        </section>
+
+    </div>
+    <div class="backgrounds"><div class="slide-background past" data-loaded="true" style="display: none;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background stack present" data-loaded="true" style="display: block;"><div class="slide-background past" data-loaded="true" style="display: block;"></div><div class="slide-background present" data-loaded="true" style="display: block;"></div></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: block;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" data-loaded="true" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div></div><div class="slide-background stack future" style="display: none;"><div class="slide-background present" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div><div class="slide-background future" style="display: none;"></div></div><div class="progress" style="display: block;"><span style="width: 260.19px;"></span></div><aside class="controls" style="display: block;"><button class="navigate-left enabled" aria-label="previous slide"></button><button class="navigate-right enabled" aria-label="next slide"></button><button class="navigate-up enabled" aria-label="above slide"></button><button class="navigate-down" aria-label="below slide"></button></aside><div class="slide-number" style="display: none;"></div><div class="speaker-notes" data-prevent-swipe=""></div><div class="pause-overlay"></div><div id="aria-status-div" aria-live="polite" aria-atomic="true" style="position: absolute; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px);">
+
+    语法：
+    return[()[expression][]];
+    可选项 expression 参数是要从函数返回的值。如果省略，则该函数不返回值。
+
+    用 return 语句来终止一个函数的执行，并返回 expression 的值。如果 expression 被省略，
+    或在函数内没有 return 语句被执行，则把值 undefined 赋给调用当前函数的表达式。
+</div></div>
+
+<script src="https://ptteng.github.io/PPT/lib/reveal/js/head.min.js"></script>
+<script src="https://ptteng.github.io/PPT/lib/reveal/reveal.js"></script>
+
+<script>
+
+    // 以下为常见配置属性的默认值
+    // {
+    // 	controls: true, // 是否在右下角展示控制条
+    // 	progress: true, // 是否显示演示的进度条
+    // 	slideNumber: false, // 是否显示当前幻灯片的页数编号，也可以使用代码slideNumber: 'c / t' ，表示当前页/总页数。
+    // 	history: false, // 是否将每个幻灯片改变加入到浏览器的历史记录中去
+    // 	keyboard: true, // 是否启用键盘快捷键来导航
+    // 	overview: true, // 是否启用幻灯片的概览模式，可使用"Esc"或"o"键来切换概览模式
+    // 	center: true, // 是否将幻灯片垂直居中
+    // 	touch: true, // 是否在触屏设备上启用触摸滑动切换
+    // 	loop: false, // 是否循环演示
+    // 	rtl: false, // 是否将演示的方向变成RTL，即从右往左
+    // 	fragments: true, // 全局开启和关闭碎片。
+    // 	autoSlide: 0, // 两个幻灯片之间自动切换的时间间隔（毫秒），当设置成 0 的时候则禁止自动切换，该值可以被幻灯片上的 ` data-autoslide` 属性覆盖
+    // 	transition: 'default', // 切换过渡效果，有none/fade/slide/convex/concave/zoom
+    // 	transitionSpeed: 'default', // 过渡速度，default/fast/slow
+    // 	mouseWheel: true, //是否启用通过鼠标滚轮来切换幻灯片
+    // }
+
+    // 初始化幻灯片
+    Reveal.initialize({
+//        history: true,
+        transition: 'default',
+        transitionSpeed: 'slow',
+        dependencies: [
+            {src: '../plugin/markdown/marked.js'},
+            {src: '../plugin/markdown/markdown.js'},
+            {src: '../plugin/notes/notes.js', async: true},
+            {
+                src: '../plugin/highlight/highlight.js', async: true, callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+    //    原始类型对象直接赋值不会相互影响
+    //    var a = 1;
+    //
+    //    var b = a;
+    //    b = 10;
+    //    console.log(a); // 1
+    ////
+    //    var a = 'hello';
+    //    var b = a;
+    //    b = 'world';
+    //    console.log(a); // hello
+    //
+    //    var a = true;
+    //    var b = a;
+    //    b = false;
+    //    console.log(a);
+
+    //数组浅复制
+    //    var a = ['隔壁老王','冠希哥', '宋经理' //定义一个名为a的属猪，里面有3个值，
+    //    ];
+    //    var b = a;   //定义一个变量b，把a赋值给他，这样比、b和a一样了
+    //    b[2] = '冲冲老师'; //然后把b的第三个值等于冲冲老师
+    //    console.log(a)//那么现在打印a 是什么结果呢
+    //
+    //    var arr = ["One","Two","Three"];   //数组的深复制，slice方法
+    //    var arrtoo = arr.slice(1);
+    //    arrtoo[2] = "set Map";
+    //    console.log(arr);//One,Two,Three
+    //    console.log(arrtoo);//One,set Map,Three
+
+    //
+    //    var arr1 = ["One","Two","Three"]; //数组的深复制，concat 方法
+    //    var arrtooo = arr1.concat(111111);
+    //    arrtooo[1] = "set Map To";
+    //    console.log(arr1);//One,Two,Three
+    //    console.log(arrtooo);//One,set Map To,Three
+
+    //
+    //    var b=[1,2,3,4,5];   //concat的链接
+    //    var c=[6,7,8,9];
+    //    var d =[4,4,22]
+    //    console.log(b.concat(c,d))
+
+    var a = {name: 'yy', age: 26};  //对象的浅拷贝哦
+    var b = new Object();
+    b.name = a.name;
+    b.age = a.age;
+    b.name = 'xx';
+    console.log(a);//Object { name="yy", age=26}
+    console.log(b);//Object { name="xx", age=26}
+
+    var d = {            //对象的浅拷贝哦 第一种
+        name: 'd',
+        oc: {
+            age: 32
+        },
+        oad: {
+            adds: {
+                bb: 12
+            }
+        }
+    };
+    var deepCopy = function (source) {
+        var result = {};
+        for (var key in source) {
+            result[key] = typeof source[key] === 'object' ? deepCopy(source[key]) : source[key]
+        }
+        return result
+    };
+
+    var c = deepCopy(d);
+    c.name = 'c';
+    c.oc = {
+        age: 49
+    };
+    console.log(c);
+    console.log(d);
+
+
+    //    var person = {    //第二种深拷贝
+    //        name: 'aa',
+    //        friends: ['da', 'dsa', 'gf']
+    //    };
+    //
+    //    var aPerson = Object.create(person, {
+    ////        name: {
+    ////            value: "gee"
+    ////        }
+    //    });
+    //
+    //    console.log(person.name);
+    //    console.log(aPerson.friends)
+
+    var Chinese = {
+        nation: '中国'
+
+    }
+    var Doctor = {
+        career: '医生'
+    }
+
+    function extendCopy(p) {
+        var c = {};
+        for (var i in p) {
+            c[i] = p[i];
+        }
+        c.uber = p;
+        return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor); // 中国
+    Chinese.birthPlaces = ['北京', '上海', '香港'];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push('厦门');
+
+</script>
+
+</body>
+</html>
